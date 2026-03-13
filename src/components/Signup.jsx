@@ -46,6 +46,10 @@ const Signup = () => {
       setEmail("")
       setPassword("")
       setPhone("")
+
+      setTimeout(() => {
+        setSuccess("");
+      }, 5000);
     }
     catch(error){
       // Set the loading hook back to default
@@ -61,7 +65,7 @@ const Signup = () => {
       <div className="col-md-6 card shadow p-4">
         <h1 className='text-primary'>Sign Up</h1>
 
-        <h5 className="text-warning">{loading}</h5>
+        <h5 className="text-info">{loading}</h5>
         <h3 className="text-success">{success}</h3>
         <h4 className="text-danger">{error}</h4>
 
@@ -102,7 +106,7 @@ const Signup = () => {
 
           {/* {phone} */}
 
-          <input type="submit" value="Signup" className='btn btn-primary' /> <br /> <br />
+          <input type="submit" value="Signup" className='btn btn-primary w-100' /> <br /> <br />
 
           Already have an account? <Link to={'/signin'}>Signin</Link>
 
