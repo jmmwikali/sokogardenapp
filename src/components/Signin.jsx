@@ -33,7 +33,7 @@ const Signin = () => {
       formdata.append("password", password);
 
       // Interact with axios for the response
-      const response = await axios.post("https://kbenkamotho.alwaysdata.net/api/signin", formdata); 
+      const response = await axios.post("https://jmmwikali.alwaysdata.net/api/signin", formdata); 
 
       // Set the loading hook back to default
       setLoading("");
@@ -43,6 +43,11 @@ const Signin = () => {
         // If user is there, definately the details entered during sign in are correct
         // setSuccess("Login Successful")
         // If it is successful, let a person get redirected to another page
+
+        // Store user details
+        // LocalStorage only stores strings
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+
         navigate("/")
 
       }
@@ -54,6 +59,9 @@ const Signin = () => {
       setTimeout(() => {
         setError("");
       }, 3000);
+
+      const user = JSON.parse(localStorage.getItem("user"));
+      console.log(user.email)
 
     }
     catch(error){
@@ -108,4 +116,4 @@ const Signin = () => {
 
 export default Signin;
 
-// How can you store 
+// How can you store the users details into the local storage
