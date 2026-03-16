@@ -60,8 +60,7 @@ const Signin = () => {
         setError("");
       }, 3000);
 
-      const user = JSON.parse(localStorage.getItem("user"));
-      console.log(user.email)
+      console.log(response.data.user)
 
     }
     catch(error){
