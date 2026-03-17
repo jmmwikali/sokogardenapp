@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import Loader from './Loader';
 import axios from 'axios';
 
@@ -9,9 +9,6 @@ const Addproducts = () => {
   const [product_description, setProductDescription] = useState("");
   const [product_cost, setProductCost] = useState("");
   const [product_photo, setProductPhoto] = useState("");
-
-  // Creating a reference to the file input
-  const fileInputRef = useRef(null);
 
   // Declare the additional hooks to manage the state of the application
   const [loading, setLoading] = useState(false);
@@ -52,8 +49,7 @@ const Addproducts = () => {
       setProductCost("");
       setProductPhoto("");
 
-      // Clearing the file input value
-      fileInputRef.current.value = null
+      e.target.reset()
 
       setTimeout(() => {
         setSuccess("");
@@ -112,8 +108,6 @@ const Addproducts = () => {
           className='form-control'
           required
           accept='image/*'
-          // Attaching the reference to the file input
-          ref={fileInputRef}
           onChange={(e) => setProductPhoto(e.target.files[0])} /> <br />
 
           {/* {product_photo} */}
