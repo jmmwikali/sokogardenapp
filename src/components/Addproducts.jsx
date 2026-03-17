@@ -10,6 +10,7 @@ const Addproducts = () => {
   const [product_cost, setProductCost] = useState("");
   const [product_photo, setProductPhoto] = useState("");
 
+  // Creating a reference to the file input
   const fileInputRef = useRef(null);
 
   // Declare the additional hooks to manage the state of the application
@@ -51,6 +52,7 @@ const Addproducts = () => {
       setProductCost("");
       setProductPhoto("");
 
+      // Clearing the file input value
       fileInputRef.current.value = null
 
       setTimeout(() => {
@@ -110,6 +112,7 @@ const Addproducts = () => {
           className='form-control'
           required
           accept='image/*'
+          // Attaching the reference to the file input
           ref={fileInputRef}
           onChange={(e) => setProductPhoto(e.target.files[0])} /> <br />
 
