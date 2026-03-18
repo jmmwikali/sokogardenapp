@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Loader from './Loader';
+import { useNavigate } from 'react-router-dom';
 
 const Getproducts = () => {
 
@@ -8,6 +9,9 @@ const Getproducts = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  // Declare the navigate hook
+  const navigate = useNavigate();
 
   // Below we specify the image base URL
   const img_url = "https://jmmwikali.alwaysdata.net/static/images/" 
@@ -60,8 +64,8 @@ const Getproducts = () => {
           <div className="card shadow">
             <img 
             src={img_url + product.product_photo} 
-            alt="product name"
-            className='product_img mt-2 p-2' />
+            alt="product photo"
+            className='product_img mt-2' />
 
             <div className="card-body">
               <h5 className="text-primary">{product.product_name}</h5>
@@ -69,6 +73,8 @@ const Getproducts = () => {
               <p className="text-dark">{product.product_description.slice(0,20)}...</p>
 
               <h4 className="text-warning">KES {product.product_cost} </h4>
+
+              <button className="btn btn-success w-100" onClick={() => navigate("/makepayment", {state : {product}})}>Purchase Now</button>
             </div>
           </div>
         </div>
